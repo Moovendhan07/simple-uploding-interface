@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .moova{
+                margin-top: 10%;
+            }
+            body{
+                cursor: pointer;
+                font-family:sans-serif;
+                background-image:url("https://i.pinimg.com/originals/11/60/86/11608630e386d60b98271e3f4942299e.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+        </style>
+        <div>
+        <h1 style="color: rgb(255, 255, 255); text-align: center;">Welcome to our website</h1>
+    </div>
+    </head>
+    <body bgcolor="pink" class="ss">
+        <script>
+            async function add_user(){
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("pass").value;
+
+            const result = await fetch("http://localhost:8000/add_user",{
+                method:"POST",
+                body:JSON.stringify({
+                    name:name,
+                    email:email,
+                    password:password
+                }),
+                headers:{
+                    "Content-type":"application/json"
+                }
+            })
+            console.log(result);
+        }
+        </script>
+        <center>
+        <div class="moova">
+            <h1 style="color: antiquewhite;">Login</h1>
+        <label style="color: aliceblue;">Username  : </label>
+        <input type="text" id="name"/><br><br>
+        <label style="color: aliceblue;">   Email :</label>
+        <input type="email" id="email"/><br><br>
+        <label style="color: aliceblue;">password  :</label>
+        <input type="password" id="pass"/><br><br>
+        <button onclick="add_user()">submit</button>
+    </div>
+    </center>
+    </body>
+</html>
